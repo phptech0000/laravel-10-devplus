@@ -3,16 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Devstagram - @yield('title')</title>
+        <title>DevPulse - @yield('title')</title>
+         @stack('styles')
          @vite('resources/css/app.css')
+         @vite('resources/js/app.js')
     </head>
     <body>
         <header class="p-5 border-b bg-violet-500 shadow">
             <div class="container mx-auto flex items-center justify-between">
-                <h1 class="text-3xl font-black text-white">DevStagram</h1>
-
-
-
+                <h1 class="text-3xl font-black text-white">DevPulse</h1>
             @auth
             <nav class="flex gap-6 items-center">
 

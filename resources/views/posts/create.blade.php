@@ -17,7 +17,7 @@
         </div>
 
         <div class="md:w-1/2 p-10 shadow-xl rounded border-2 border-violet-500 mt-10 md:mt-0">
-              <form action="{{route('register')}}" method="POST" novalidate>
+              <form action="{{route('posts.store')}}" method="POST" novalidate>
             @csrf
             <div class="mb-5">
                 <label for="title" class="mb-2 block uppercase text-gray-500 font-bold">Titulo</label>
@@ -50,6 +50,22 @@
                     </p>
                 @enderror
             </div>
+
+            <div class="mb-5">
+                <input
+                    name="image"
+                    type="hidden"
+                    value="{{old('image')}}"
+                    />
+
+                @error('image')
+                    <p class="bg-red-500 text-center text-white my-2 rounded-lg text-sm p-2 uppercase font-bold">
+                        {{ $message }}
+                    </p>
+                @enderror
+
+            </div>
+
             <input type="submit" value="Publicar" class="bg-violet-500 hover:bg-violet-600 transition-colors cursor-pointer w-full text-white font-bold rounded p-3">
               </form>
         </div>
