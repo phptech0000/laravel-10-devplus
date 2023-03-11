@@ -35,12 +35,20 @@
 
                 </div>
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
-                    0
-                    <span class="font-normal">Seguidores</span>
+                    {{ $user->followers->count() }}
+                    <span class="font-normal">
+                        @if ($user->followers->count() === 1)
+                            Seguidor
+                        @else
+                            Seguidores
+                        @endif
+                    </span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
-                    <span class="font-normal">Seguindo</span>
+                    {{ $user->followings->count() }}
+                    <span class="font-normal">
+                        Seguindo
+                    </span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
                     {{ $user->posts->count() }}
@@ -48,18 +56,22 @@
                 </p>
 
                 @auth
-                    <form action="{{ route('users.follow', $user) }}" method="POST">
-                        @csrf
-                        <input type="submit" value="Seguir"
-                            class="bg-violet-500 text-white py-1 px-4 rounded-lg cursor-pointer uppercase font-bold">
-                    </form>
-
-                    <form action="{{ route('users.unfollow', $user) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <input type="submit" value="Deixar de seguir"
-                            class="bg-red-500 text-white py-1 px-4 rounded-lg cursor-pointer uppercase font-bold">
-                    </form>
+                    @if ($user->id !== auth()->user()->id)
+                        @if (!$user->following(auth()->user()))
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input type="submit" value="Seguir"
+                                    class="bg-violet-500 text-white py-1 px-4 mb-2 rounded-lg cursor-pointer uppercase font-bold">
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Deixar de seguir"
+                                    class="bg-red-500 text-white py-1 px-4 rounded-lg cursor-pointer uppercase font-bold">
+                            </form>
+                        @endif
+                    @endif
                 @endauth
 
             </div>
@@ -75,7 +87,8 @@
                     <div class="">
 
                         <a href="{{ route('posts.show', ['post' => $post, 'user' => $user]) }}">
-                            <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagem de post {{ $post->title }}">
+                            <img src="{{ asset('uploads') . '/' . $post->image }}"
+                                alt="Imagem de post {{ $post->title }}">
                         </a>
                     </div>
                 @endforeach
