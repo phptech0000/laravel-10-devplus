@@ -6,7 +6,6 @@
 
 
 @section('content')
-
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">
@@ -80,26 +79,6 @@
 
     <section class="container mx-auto mt-10 p-2">
         <h2 class="text-4xl text-center font-black my-10">Publicações</h2>
-
-        @if ($posts->count())
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
-                @foreach ($posts as $post)
-                    <div class="">
-
-                        <a href="{{ route('posts.show', ['post' => $post, 'user' => $post->user]) }}">
-                            <img src="{{ asset('uploads') . '/' . $post->image }}"
-                                alt="Imagem de post {{ $post->title }}">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-
-            <div class="my-10">
-                {{ $posts->links('pagination::tailwind') }}
-            </div>
-        @else
-            <p class="text-gray-700 uppercase text-sm text-center font-bold">Ainda não a publicações!</p>
-        @endif
+        <x-list-post :posts="$posts" />
     </section>
-
 @endsection

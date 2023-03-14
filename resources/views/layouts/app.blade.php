@@ -8,6 +8,8 @@
     @stack('styles')
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @livewireStyles
+
 </head>
 
 <body>
@@ -48,8 +50,6 @@
                 </nav>
             @endguest
 
-
-
         </div>
     </header>
 
@@ -64,6 +64,8 @@
         DevStagram - Todos os direitos Reservados {{ now()->year }}
     </footer>
 
+
+    @livewireScripts
 </body>
 
 </html>
