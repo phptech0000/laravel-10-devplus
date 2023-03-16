@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="mx-auto max-w-lg md:flex md:justify-center shadow-xl rounded border-2 border-violet-500">
-        <div class="md:w-8/12 p-5 ">
-            <form action="{{ route('register') }}" method="POST" novalidate>
+    <div class="mx-auto max-w-lg flex justify-center flex-col items-center gap-5">
+        <div class="w-10/12">
+            <form class="p-8 shadow-xl rounded border-2 border-violet-500" action="{{ route('register') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">Nome</label>
@@ -66,6 +66,10 @@
                 <input type="submit" value="Criar Conta"
                     class="bg-violet-500 hover:bg-violet-600 transition-colors cursor-pointer w-full text-white font-bold rounded p-3">
             </form>
+        </div>
+        <div class="p-5 shadow-xl rounded border-2 border-violet-500 w-10/12">
+            <p class="text-center text-gray-500">Tem uma conta? <a class="text-violet-900 font-bold"
+                    href="{{route('login')}}">Conecte-se</a></p>
         </div>
     </div>
 @endsection

@@ -13,10 +13,10 @@
 </head>
 
 <body>
+@auth
     <header class="p-5 border-b bg-violet-500 shadow">
         <div class="container mx-auto flex items-center justify-between">
             <a href="{{ route('home') }}" class="text-3xl font-black text-white">DevPulse</a>
-            @auth
                 <nav class="flex gap-6 items-center">
 
                     <a class="flex items-center gap-2 bg-white border px-6 py-2 text-violet-600 rounded text-sm uppercase font-bold cursor-pointer"
@@ -54,7 +54,7 @@
     </header>
 
     <main class="container p-2 mx-auto mt-10">
-        <h2 class="font-black text-center text-3xl mb-10">
+        <h2 class="font-bold text-center text-3xl mb-10 text-gray-500">
             @yield('title')
         </h2>
         @yield('content')

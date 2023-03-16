@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('title')
-    Iníciar Sessão
+ Entrar
 @endsection
 
 @section('content')
-    <div class="mx-auto max-w-lg md:flex md:justify-center shadow-xl rounded border-2 border-violet-500">
-        <div class="md:w-8/12 p-5 ">
-            <form method="POST" action="{{ route('login') }}" novalidate>
+    <div class="mx-auto max-w-lg flex justify-center flex-col items-center gap-5">
+        <div class="w-10/12">
+            <h1 class="text-violet-500 font-bold mb-4 text-center text-4xl">DevPulse</h1>
+            <form class="p-8 shadow-xl rounded border-2 border-violet-500" method="POST" action="{{ route('login') }}" novalidate>
                 @csrf
-
                 @if (session('mensagem'))
                     <p class="bg-red-500 text-center text-white my-2 rounded-lg text-sm p-2 uppercase font-bold">
                         {{ session('mensagem') }}
@@ -47,5 +47,9 @@
                     class="bg-violet-500 hover:bg-violet-600 transition-colors cursor-pointer w-full text-white font-bold rounded p-3">
             </form>
         </div>
+        <div class="p-5 shadow-xl rounded border-2 border-violet-500 w-10/12">
+            <p class="text-center text-gray-500">Não tem uma conta? <a class="text-violet-900 font-bold" href="{{route('register')}}">Cadastra-se</a></p>
+        </div>
     </div>
+
 @endsection
