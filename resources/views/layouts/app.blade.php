@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     <title>DevPulse - @yield('title')</title>
     @stack('styles')
     @vite('resources/css/app.css')
@@ -16,10 +17,9 @@
 @auth
     <header class="p-5 border-b bg-violet-500 shadow">
         <div class="container mx-auto flex items-center justify-between">
-            <a href="{{ route('home') }}" class="text-3xl font-black text-white">DevPulse</a>
-                <nav class="flex gap-6 items-center">
-
-                    <a class="flex items-center gap-2 bg-white border px-6 py-2 text-violet-600 rounded text-sm uppercase font-bold cursor-pointer"
+            <a href="{{ route('home') }}" class="text-2xl md:text-3xl font-black mr-2 text-white">DevPulse</a>
+                <nav class="flex bg-red gap-6 items-center">
+                    <a class="flex items-center gap-2 bg-white border px-2 py-1 text-violet-600 rounded text-sm uppercase font-bold cursor-pointer"
                         href="{{ route('posts.create') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -54,7 +54,7 @@
     </header>
 
     <main class="container p-2 mx-auto mt-10">
-        <h2 class="font-bold text-center text-3xl mb-10 text-gray-500">
+        <h2 class="font-bold text-center text-2xl mb-10 text-gray-500 capitalize">
             @yield('title')
         </h2>
         @yield('content')

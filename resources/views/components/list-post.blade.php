@@ -6,7 +6,6 @@
                     <a href="{{ route('posts.show', ['post' => $post, 'user' => $post->user]) }}">
                         <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagem de post {{ $post->title }}">
                     </a>
-                    {{-- <p>Postado por: <span class="capitalize">{{ $post->user->username }}</span></p> --}}
                 </div>
             @endforeach
         </div>

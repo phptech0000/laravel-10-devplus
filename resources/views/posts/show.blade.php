@@ -31,7 +31,7 @@
                         @csrf
                         <input type="submit" value="Apagar Publicação"
                             class="bg-red-500 hover:bg-red-600 p-2
-                        rounded text-white font-bold mt-4 cursor-pointer">
+                        rounded text-white font-bold mb-4 cursor-pointer">
                     </form>
                 @endif
             @endauth
@@ -79,7 +79,7 @@
                                     {{ $comment->user->username }}
                                 </a>
                                 <p>{{ $comment->comment }}</p>
-                                <p class="text-sm mt-5 xl:mt-0">{{ $comment->created_at->diffForHumans() }}</p>
+                                <p class="text-sm">{{ $comment->created_at->diffForHumans() }}</p>
                             </div>
                         @endforeach
                     @else

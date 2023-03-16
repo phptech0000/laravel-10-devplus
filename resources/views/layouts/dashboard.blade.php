@@ -8,7 +8,7 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
-            <div class="w-8/12 lg:w-6/12 px-5">
+            <div class="w-6/12 px-5">
                 <img class="rounded-full"
                     src="{{ $user->image ? asset('perfiles') . '/' . $user->image : asset('img/user.svg') }}" alt="user">
             </div>
@@ -33,13 +33,14 @@
                     @endauth
 
                 </div>
+               <div>
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
                     {{ $user->followers->count() }}
                     <span class="font-normal">
                         @if ($user->followers->count() === 1)
-                            Seguidor
+                        Seguidor
                         @else
-                            Seguidores
+                        Seguidores
                         @endif
                     </span>
                 </p>
@@ -49,10 +50,11 @@
                         Seguindo
                     </span>
                 </p>
-                <p class="text-gray-800 text-sm mb-3 font-bold">
+                <p class="text-gray-800 text-sm text-left mb-3 font-bold">
                     {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
+               </div>
 
                 @auth
                     @if ($user->id !== auth()->user()->id)
@@ -77,8 +79,8 @@
         </div>
     </div>
 
-    <section class="container mx-auto mt-10 p-2">
-        <h2 class="text-4xl text-center font-black my-10">Publicações</h2>
+    <section class="container mx-auto p-2">
+        <h2 class="text-4xl text-center font-black my-10 text-gray-500">Publicações</h2>
         <x-list-post :posts="$posts" />
     </section>
 @endsection
