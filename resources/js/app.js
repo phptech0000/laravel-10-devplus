@@ -1,10 +1,10 @@
 import Dropzone from "dropzone";
 
-document.querySelector("DOMContentLoaded", function () {
-    const DocumentImage = document.querySelector('[name="image"]');
+const DocumentImage = document.querySelector('[name="image"]');
 
-    Dropzone.autoDiscover = false;
+Dropzone.autoDiscover = false;
 
+if (document.querySelector("#dropzone")) {
     const dropzone = new Dropzone("#dropzone", {
         dictDefaultMessage: "Subir imagem",
         acceptedFiles: ".png,.jpg,.jpeg,.gif",
@@ -40,4 +40,4 @@ document.querySelector("DOMContentLoaded", function () {
     dropzone.on("removedfile", function () {
         DocumentImage.value = "";
     });
-});
+}
